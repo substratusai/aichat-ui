@@ -1,12 +1,17 @@
 from openai import OpenAI
 import streamlit as st
 
-st.title("ChatGPT-like clone")
+st.title("AI Chat UI")
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
+def clear_messages():
+    st.session_state.messages = []
+
 with st.sidebar:
+    st.title("Actions")
+    st.button("Clear Chat", on_click=clear_messages)
     st.title("Settings")
     st.text_input("API Host", key="api_host", value="http://localhost:8080/v1")
     st.text_input("Model", key="model", value="mixtral-8x7b-instruct-gptq")
