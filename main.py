@@ -24,6 +24,7 @@ with st.sidebar:
     st.text_input("API Host", key="api_host", value=default_api_host)
     st.text_input("Model", key="model", value=default_model)
     st.text_input("API Key (Optional)", key="api_key", value=default_api_key)
+    "[View the source code](https://github.com/substratusai/aichat-ui)"
 
 client = OpenAI(api_key=st.session_state.api_key, base_url=st.session_state.api_host)
 
