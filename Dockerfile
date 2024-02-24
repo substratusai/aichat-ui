@@ -14,7 +14,7 @@ COPY requirements.txt requirements.txt
 RUN pip3 install -r requirements.txt
 COPY main.py main.py
 
-EXPOSE 8501
+EXPOSE 8081
 
 ENV STREAMLIT_CLIENT_TOOLBAR_MODE="viewer"
 HEALTHCHECK CMD curl --fail http://localhost:8081/_stcore/health
