@@ -1,7 +1,14 @@
+import os
+
 from openai import OpenAI
 import streamlit as st
 
+
+default_api_host = os.environ.get("API_HOST", "http://localhost:8080/v1")
+default_model = os.environ.get("MODEL", "mixtral-8x7b-instruct-gptq")
+
 st.title("AI Chat UI")
+
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
@@ -13,8 +20,8 @@ with st.sidebar:
     st.title("Actions")
     st.button("Clear Chat", on_click=clear_messages)
     st.title("Settings")
-    st.text_input("API Host", key="api_host", value="http://localhost:8080/v1")
-    st.text_input("Model", key="model", value="mixtral-8x7b-instruct-gptq")
+    st.text_input("API Host", key="api_host", value=default_api_host)
+    st.text_input("Model", key="model", value=default_model)
 
 client = OpenAI(api_key="canbeanything", base_url=st.session_state.api_host)
 
